@@ -1,6 +1,6 @@
 ### 1.了解Webpack相关
 1. 什么是webpack
-    * Webpack是一个模块打包器(bundler)。
+    * Webpack是一个静态模块打包器(bundler)。
         * 在Webpack看来, 前端的所有资源文件(js/json/css/img/less/...)都会作为模块处理
         * 它将根据模块的依赖关系进行静态分析，生成对应的静态资源
 * 四个核心概念
@@ -33,7 +33,7 @@
 		- npm install webpack@3 -g  //全局安装
 		- npm install webpack@3 --save-dev  //局部安装
 	3. 小试牛刀处理一个js
-		执行命令：webpack src/js/index.js build/index.js
+		执行命令：webpack ./src/js/index.js(入口，主模块文件的路径) ./build/index.js（出口）
 	观察发现webpack会把es6的模块化语法，直接编译为浏览器识别的模块化语法，不过类似于箭头函数等依然存在
 
 #### 2. 使用webpack配置文件
@@ -93,7 +93,7 @@
 	        options: {
 	          outputPath:'img',         //图片最终输出的位置
 	          publicPath:'../build/img',//css资源图片路径
-	  		  name:'[hash:5].[ext]'     //修改图片名称
+	  		  name:'[name]_[hash:5].[ext]'     //修改图片名称
 	        }
 	      }
 	    ]
