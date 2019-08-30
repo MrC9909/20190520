@@ -24,7 +24,7 @@ module.exports = {
     //出口
     output: {
         //输出的绝对路径
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, '../build'),
         //名称
         filename: './js/build.js'
     },
