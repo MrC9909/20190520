@@ -12,6 +12,10 @@
 const path = require('path');
 //将css文件提取为单独的css文件
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//处理html(从指定模板下输出对应的html文件并且自动给我添加js和css)
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//清空目录
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 //暴露
 module.exports = {
@@ -44,6 +48,7 @@ module.exports = {
                         }
                     ]
             },*/
+            //合并css为单独的一个文件
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
@@ -84,12 +89,63 @@ module.exports = {
                 ]
             },
 
-            //合并css为单独的一个文件
+            //语法检查
+            {
+                test: /\.js$/, // 涵盖 .js 文件
+                enforce: "pre", // 预先加载好 jshint loader
+                exclude: /node_modules/, // 排除掉 node_modules 文件夹下的所有文件
+                use: [
+                    {
+                        loader: "jshint-loader",
+                        options: {
+                            esversion: 6,
+                            // 更多 jslint 的配置项
+                            // 查询 jslint 配置项，请参考 http://www.jshint.com/docs/options/
+
+
+                            //jslint 的错误信息在默认情况下会显示为 warning（警告）类信息
+                            //将 emitErrors 参数设置为 true 可使错误显示为 error（错误）类信息
+                            emitErrors: false,
+
+                            //jshint 默认情况下不会打断webpack编译
+                            //如果你想在 jshint 出现错误时，立刻停止编译
+                            //请设置 failOnHint 参数为true
+                            failOnHint: false,
+
+                            // 自定义报告函数
+                            // reporter: function(errors) {
+                            //     console.log('哈哈哈');
+                            // }
+                        }
+                    }
+                ]
+            },
+
+            //编译-bable-loader
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,//排除
+                use: {
+                    loader: 'babel-loader',  //加载babel-loader
+                    //配置项
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+
         ]
     },
     //插件
     plugins: [
         new ExtractTextPlugin("./css/build.css"),//配置插件提取单独的css
+        new HtmlWebpackPlugin({
+            //输出的文件名称
+            filename: 'index.html',
+            //指定模板进行输出
+            template:'./src/index.html'
+        }),
+        //最新版本不需要自己配置，直接调用
+        new CleanWebpackPlugin()
     ]
-
 };
