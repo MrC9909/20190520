@@ -11,6 +11,46 @@
 <script type="text/javascript" src="../js/react.development.js"></script>
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
 
+  /*默认页面展示我喜欢你单击改变成为你喜欢我*/
+  class Like extends React.Component{
+      constructor(props) {
+          super(props);
+
+          //设置组件状态(初始化状态)
+          this.state = {
+              isLikeMe:true  //设置初始值
+          }
+      }
+
+      // state = {
+      //     isLikeMe:true  //设置初始值
+      // };
+
+      render(){
+          console.log('1111');
+          return <h2 onClick={this.change}>{this.state.isLikeMe?'我喜欢你':"你喜欢我"}</h2>;
+      }
+
+
+      //如果我们直接在原型这样定义方法  里边this是undefined
+      // change(){
+      //     console.log(this);
+      //     console.log(1);
+      // }
+
+    //使用箭头函数的方式进行定义，箭头函数没有自己this,它的this是当前坐在上下文的this
+      change = ()=>{
+          console.log(this);
+          //修改状态   我们可以通过设置状态改变状态值  状态值一旦改变就会触发render重新渲染
+          this.setState({   //让render重新渲染
+              isLikeMe:!this.state.isLikeMe
+          });
+      }
+
+  }
+  ReactDOM.render(<Like/>,document.querySelector("#example"));
+</script>
 </body>
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>02_JSX_DEMO</title>
+</head>
+<body>
+<h2>创建虚拟DOM元素对象的两种方式</h2>
+<div id="example1"></div>
+<div id="example2"></div>
+
+<!--RACT核心库中所有的方法都用React-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--RACT-DOM核心库中所有的方法都用ReactDOM调用-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/javascript">
+    //纯js的方式进行创建
+
+    //创建虚拟DOM元素
+    //参数：
+    /*
+    * 1.type:传递的是当前标签的名称
+    * 2.config:{元素的属性}
+    * 3.children:孩子 子元素
+    * */
+    let vDOM = React.createElement('div',{id:"box1",class:"myBox"},"哈哈哈");
+
+
+    /*
+    * 参数：
+    *   1.虚拟DOM元素对象
+    *   2.容器
+    *   3.渲染成功的回调  一般不用
+    * */
+    ReactDOM.render(vDOM,document.querySelector("#example1"),()=>{
+       console.log('我创建成功了,哈哈哈哈');
+    });
+</script>
+<script type="text/babel">
+    //用jsx的方式进行创建
+    let vDOM1 = <div><h2><span>好好</span></h2></div>;
+    ReactDOM.render(vDOM1,document.getElementById("example2"));
+    ReactDOM.render(<div>哈哈哈哈</div>,document.getElementById("example2"));
+
+
+    console.log(React.createElement("div", null, "\u54C8\u54C8\u54C8\u54C8"));
+
+</script>
+
+
+</body>
+</html>

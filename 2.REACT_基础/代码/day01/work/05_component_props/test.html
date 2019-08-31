@@ -14,7 +14,44 @@
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
 <script type="text/javascript" src="../js/prop-types.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
 
+    // 需求: 自定义用来显示一个人员信息的组件
+    // 1). 姓名必须指定
+    // 2). 如果性别没有指定, 默认为男
+    // 3). 如果年龄没有指定, 默认为18
+
+  class Person extends React.Component{
+      //我们在定义组件的时候可能会设置默认值和一些规则
+
+    //设置默认值  (如果没有传递当前属性就按默认值处理)  只会提示警告(waring)但是不会报错（error）
+    static defaultProps = {
+        sex:"男",
+        age:18
+    };
+
+    //设置一些规则
+    static propTypes = {
+        name:PropTypes.string.isRequired,   //设置必须传递
+        age:PropTypes.number,
+        sex:PropTypes.string
+    };
+
+
+      render(){
+          const {name,age,sex} = this.props;
+          return <ul>
+              <li>姓名:{name}</li>
+              <li>性别:{age}</li>
+              <li>年龄:{sex}</li>
+          </ul>
+      }
+  }
+
+  //调用当前组件 当前组件的组件对象上有一个私有属性叫props,我们再去调用这个组件的时候传递的属性会放到porps中
+  ReactDOM.render(<Person name='猪八戒'  sex='男'/>,document.querySelector("#example1"));
+  ReactDOM.render(<Person name="孙悟空" age={"500"} />,document.querySelector("#example2"));
+</script>
 </body>
 </html>
 

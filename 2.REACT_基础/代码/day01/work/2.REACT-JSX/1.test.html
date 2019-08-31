@@ -7,9 +7,52 @@
 <body>
   <div id="test1"></div>
   <div id="test2"></div>
+  <div id="test3"></div>
 
+  <!--REACT核心库-->
   <script type="text/javascript" src="../js/react.development.js"></script>
+  <!--REACT-DOM  DOM库-->
   <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!--进行编译-->
   <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+    //jsx概念:javascript xml(本身html中所有的标签和自定义的标签)
+    //首先JSX语法是RACT独有的
+    //之前我们在js中进行数据的拼接我们使用es6模板字符串，`<div>${变量名}</div>`，jsx语法也比较简单只需要将``去掉，并且将$去掉，{}里边放的是js表达式
+
+
+    const str1 = 'I LIKE YOU!';
+    const str2 = 'i like you!';
+    const num1 = 2;
+    const unde= undefined;
+    const nu= null;
+    const boolean = true;
+
+    const obj = {name:"科比",age:18};
+    const arr = ["name","age","hobby"];
+    const arr1 = [{name:"科比",age:19},{name:"科比",age:20},{name:"科比",age:18}];
+
+
+
+    /*1.jsx语法的总结
+    *  - {}存放的是js表达式
+    *     - 存放基本数据类型的值  undefined null boolean是一个空串
+    *     - 不可以是数组或对象但是如果数组中全部是基本数据类型的值是可以的
+    *     - 不支持if，switch..或for,但是支持三元表达式
+    * */
+
+    //1.创建虚拟DOM
+    const vDDOM1 = <h2>{str1}{num1}{unde}{nu}{boolean}</h2>;
+    const vDDOM2 = <h3>{str2}{arr}</h3>;
+    const vDDOM3 = <h3>{num1<10?str1:str2}</h3>;
+
+
+    //2.将虚拟的DOM元素对象转化为真是的DOM元素对象
+    ReactDOM.render(vDDOM1,document.querySelector("#test1"));
+    ReactDOM.render(vDDOM2,document.querySelector("#test2"));
+    ReactDOM.render(vDDOM3,document.querySelector("#test3"));
+
+  </script>
+
 </body>
 </html>

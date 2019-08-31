@@ -12,6 +12,40 @@
   <script type="text/javascript" src="../js/react.development.js"></script>
   <script type="text/javascript" src="../js/react-dom.development.js"></script>
   <script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  //定义组件的两种方式
+  //函数式组件
+  //定义组件
+  function MyCompinent1() {  //特点：简单，效率会高，只能去做一些简单的操作 ，返回什么内容就是什么，在调用的时候就确定了，只能去手动更改原来的定义组件部分
+      console.log("函数式组件",this);
+      return <h2>我是函数式组件</h2>;  //函数式组件的this是undefined
+  }
 
+  //调用组件   <MyCompinent1/>   <MyCompinent1></MyCompinent1>
+  ReactDOM.render(<MyCompinent1/>,document.querySelector("#example1"));
+
+
+  //基于React.Component这个类创建的组件（类组件(用的es6类的方式创建)）
+  class MyCompinent2 extends React.Component{ //比较复杂
+        // constructor(){//构造器
+        //     super(); //ReactDOM.Component.constructor.call(this); //让父类私有的变为子类私有的
+        // }
+
+        //写在原型上的方法    render方法渲染jsx元素
+        render(){
+            console.log(this);
+            return <h2>我是类组件</h2>;
+        }
+  }
+
+
+  //调用组件   相当于将当前这个类以new的方式进行创建
+  ReactDOM.render(<div>
+      <MyCompinent1/>
+     <MyCompinent2/>
+  </div>,document.querySelector("#example2"));
+
+
+</script>
 </body>
 </html>

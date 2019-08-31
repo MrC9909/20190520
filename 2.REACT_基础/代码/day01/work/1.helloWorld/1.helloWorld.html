@@ -17,14 +17,16 @@
 
     //1.创建虚拟DOM元素对象
     //JSX：javaScript and XML  使我们REACT中独有的语法
-    let vDOM = <div>hello react</div>;
+    // let vDOM = <div>hello react</
+    const name = <h2>hello</h2>;
+    console.log(name,typeof name);
 
     //2.渲染虚拟DOM元素对象
     //ReactDOM：react-dom库提供的方法  render：渲染  将虚拟的DOM元素对象渲染为真实的DOM对象
     /*
     * render(jsx元素对象,容器);
     * */
-    ReactDOM.render(vDOM, document.querySelector("#test"));
+    ReactDOM.render(name, document.querySelector("#test"));
 </script>
 </body>
 </html>
