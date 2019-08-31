@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>01_HelloWorld</title>
+    <meta charset="UTF-8">
+    <title>01_HelloWorld</title>
 </head>
 <body>
-  <div id="test"></div>
+<div id="test"></div>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+
+    // let str = '张三';
+    // let dom = `<div>${str}</div>`;
+    //只需要将ES6模板字符串中``去掉，并且将$去掉就ok了
+
+    //1.创建虚拟DOM元素对象
+    //JSX：javaScript and XML  使我们REACT中独有的语法
+    let vDOM = <div>hello react</div>;
+
+    //2.渲染虚拟DOM元素对象
+    //ReactDOM：react-dom库提供的方法  render：渲染  将虚拟的DOM元素对象渲染为真实的DOM对象
+    /*
+    * render(jsx元素对象,容器);
+    * */
+    ReactDOM.render(vDOM, document.querySelector("#test"));
+</script>
 </body>
 </html>
