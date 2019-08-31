@@ -3,7 +3,7 @@
 	Output：出口，webpack编译打包生成的bundle(打包文件)
 	Loader：模块加载(转换)器，将非js、非json模块包装成webpack能理解的js模块
 	Plugin：插件，在 Webpack 构建流程中的特定时机插入具有特定功能的代码
-	Module：模块，在 Webpack眼里一切皆模块，默认只识别js文件, 如果是其它类型文件利用对应的loader转换为js模块
+	Module：模块，在 Webpack眼里一切皆模块，默认只识别js和json文件, 如果是其它类型文件利用对应的loader转换为js模块
 
 ###2.webpack配置文件的整体结构
 	module.exports = {
@@ -59,7 +59,7 @@
 					(1).该loader需要一个postcss.config.js配置文件。
 					(2).该loader要配合autoprefixer库使用。
 					(3).该loader使用的时机为：["css-loader","postcss-loader","less-loader"]
-			
+
 
 	pulgin：
 		1.【extract-text-webpack-plugin】：用于提取项目中的css,最终合并为一个单独的文件。
@@ -70,8 +70,8 @@
 			     template:"./src/index.html"
 			     //用于压缩html
 			      minify:{
-                         removeComments:true, //移除注释
-                         collapseWhitespace:true}//移除换行
+	                     removeComments:true, //移除注释
+	                     collapseWhitespace:true}//移除换行
 		3.【clean-webpack-plugin】：清空webpack的输出目录，防止其他文件“乱入”。
 		4.【HotModuleReplacementPlugin】：热模替换（HMR）插件
 				备注：1.该模块必须配合webpack-dev-server模块使用，且webpack-dev-server中必须启用HMR
@@ -80,9 +80,10 @@
 							(2).必须在入口文件中声明使用。
 		5.【UglifyJsPlugin】：压缩js的插件，且可以生成sourceMap映射文件，用于方便排查错误。
 		6.【less-plugin-clean-css】：压缩css文件，在less-loader翻译less文件之后，该插件介入，开始压缩。
-				
-				
-	
 
-		
-	
+
+​				
+​	
+
+
+​	
