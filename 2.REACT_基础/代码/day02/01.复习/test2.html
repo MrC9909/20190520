@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6类</title>
+</head>
+<body>
+<script type="text/javascript">
+    class Person {
+        constructor(name='张三',age=100){
+            this.name = name;
+            this.age = age;
+            this.rate = function () {
+
+            }
+        }
+
+        //这里相当于给构造函数添加属性    相当于在constructor中直接添加属性
+        hobby = '打篮球';
+
+        //给构造函数的原型添加的方法
+        add(){
+
+        }
+        //给构造函数的原型添加的方法
+        sum(){
+
+        }
+
+        //相当于给构造函数添加属性
+        ride=()=>{
+
+        }
+    }
+
+    let persion1 = new Person("李四",200);
+
+    console.log(persion1);
+
+    class Stu extends Person{
+        constructor(sex='未知'){
+            super();
+            this.sex = sex;
+            this.hi = function () {
+                
+            }
+
+
+        }
+
+        hahah='aaa'
+;
+
+
+        learn(){
+
+        }
+
+        hello = ()=>{
+
+        }
+
+    }
+
+
+    let stu1 = new Stu();
+    console.log(stu1);
+
+
+
+</script>
+</body>
+</html>

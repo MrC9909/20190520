@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>06_component_refs_event</title>
+</head>
+<body>
+<br>
+<div id="example"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    /*
+    需求: 自定义组件, 功能说明如下:
+    2. 点击按钮, 提示第一个输入框中的值
+    3. 当第2个输入框失去焦点时, 提示这个输入框中的值
+    */
+
+    class Show extends React.Component{
+        // constructor(){
+        //     super();
+        //     this.myRef = React.createRef();
+        // }
+
+        //创建一个ref容器
+        myRef1 = React.createRef();
+        myRef2 = React.createRef();
+
+        render(){
+            console.log(this);
+            return (
+                <div style= {{width:"600px",margin:"0 auto"}}>
+                    {/*首先我们创建了一个ref容器   将这个容器给到这个元素的ref属性，并且把这个元素存储到这个容器当中，如果说我们想要获取这个容器中对应的元素需要调用这个这个容器对应的current*/}
+                    <input type="text" ref={this.myRef1}/>
+                    <button onClick={this.show}>点击显示数据</button>
+                    <input type="text" ref={this.myRef2} onBlur={this.show1}/>
+                </div>
+            );
+        }
+
+
+        show = ()=>{
+            //我们直接在要获取的元素上添加ref属性，就会将当前元素自动保存到组件对象上refs属性中（对象），并且当前设置的ref的值在refs中就是属性名对应的就是当前这个元素
+            alert(this.myRef1.current.value);
+        };
+
+        show1 = ()=>{
+            alert(this.myRef2.current.value)
+        }
+    }
+
+    ReactDOM.render(<Show/>,document.querySelector("#example"));
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>07_components_composing</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  * 1.根据界面划分组件
+  * 2.静态组件（搭建静态组件的页面）
+  * 3.动态组件（交互）
+  *   1.初始化状态数据
+  *       - 确定数据类型
+  *       - 确定数据名
+  *   2.初始化状态的数据写到那个组件
+  *       - 如果只是给某个单独的组件的就直接给那个组件就可以
+  *       - 如果多个组件都会使用，就给到他们共同的父组件
+  * */
+
+  class Todo extends React.Component{
+      constructor(props) {
+          super(props);
+
+          //初始化状态数据
+          this.state = {
+            todoArrays:["吃faN","睡觉","打豆豆"]
+          };
+      }
+
+      render() {
+          console.log(1);
+          return (
+              <div>
+                  <Add changeTodosArray={this.changeTodosArray}/>
+                  <List todoArrays={this.state.todoArrays}/>
+              </div>
+          );
+      }
+
+      //自己定义一个方法用来改变状态数据
+    changeTodosArray = (value)=>{
+        //获取状态数据
+          const {todoArrays} = this.state;
+          //修改状态数据
+         todoArrays.unshift(value);
+          //修改状态数据
+          this.setState({
+              todoArrays
+          });
+    }
+
+  }
+
+  class Add extends React.Component{
+
+      //设置规则
+      static propTypes = {
+          changeTodosArray:PropTypes.func.isRequired
+      };
+
+      constructor(props) {
+          super(props);
+
+      }
+
+      render() {
+          console.log(2);
+          return (
+              <div>
+                <h2>simple Todo List</h2>
+                <input type="text" ref="todoVlue"/><button onClick={this.addTodos}>添加</button>
+              </div>
+          );
+      }
+
+      //点击添加按钮
+      addTodos = ()=>{
+          //取到输入框的值
+          const todoValue = this.refs.todoVlue.value.trim();
+          if (todoValue){
+              this.props.changeTodosArray(todoValue);
+          }
+          this.refs.todoVlue.value = '';
+      }
+
+  }
+
+  class List extends React.Component{
+      //设置规则
+      static propTypes = {
+          todoArrays:PropTypes.array.isRequired,
+      };
+      constructor(props) {
+          super(props);
+      }
+
+      render() {
+          console.log(3);
+          const {todoArrays} = this.props;
+          return (
+              <ul>
+                  {
+                      todoArrays.map((item,index)=>{
+                          return <li key={index}>{item}</li>
+                      })
+                  }
+              </ul>
+          );
+      }
+
+  }
+
+
+  ReactDOM.render(<Todo/>,document.querySelector("#example"));
+
+
+</script>
+
+</body>
+</html>

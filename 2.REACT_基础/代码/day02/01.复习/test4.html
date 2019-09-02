@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/prop-types.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel">
+    class Like extends React.Component{
+
+        //设置默认属性
+        static defaultProps = {
+            name:"hello"
+        };
+
+        //设置规则  不能直接设置我么导入一个js库  prop-types
+        static PropTypes = {
+            //isRequired  必须传递
+            name:PropTypes.isRequired,
+        };
+
+        render(){
+            this.props.name = 10000;
+            //属性是只读的我们只能读取不能修改
+            return <h2>{this.props.name}</h2>;
+        }
+    }
+
+    ReactDOM.render(<Like name="那坨把"/>,document.querySelector("#root"));
+</script>
+</body>
+</html>
