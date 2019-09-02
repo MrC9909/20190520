@@ -15,5 +15,102 @@
 <script type="text/javascript" src="../js/react.development.js"></script>
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+
+class Login extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username:'',
+            userpwd:''
+        }
+
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.submit}>
+                <input type="text" ref="username"/>&nbsp;
+                <input type="text" ref="userpwd"/>
+                <button>登录</button>
+            </form>
+        );
+    }
+
+    submit = (event)=>{
+        event.preventDefault();
+        //收集表单元素的数据
+        const username = this.refs.username.value.trim();
+        const userpwd = this.refs.userpwd.value.trim();
+
+        this.setState({
+            username,
+            userpwd
+        });
+
+        //发送ajax请求
+        if (username && userpwd){
+            alert(`发送ajax请求username=${username}&userpwd=${userpwd}`);
+        }
+    }
+
+}
+
+
+
+class Login1 extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            username:'',
+            userpwd:''
+        }
+    }
+
+    render() {
+        console.log(this.state);
+        return (
+            <form onSubmit={this.submit}>
+                <input type="text" ref="username" onChange={this.nameChange}/>&nbsp;
+                <input type="text" ref="userpwd" onChange={this.pwdChange}/>
+                <button>登录</button>
+            </form>
+        );
+    }
+
+    submit =(event)=>{
+        event.preventDefault();
+        const {username,userpwd} = this.state;
+        console.log(`发送ajax请求username=${username}&userpwd=${userpwd}`);
+    };
+
+
+    nameChange =(event) =>{
+        console.log(1);
+        let username = event.target.value.trim();
+        this.setState({
+            username
+        });
+    };
+
+    pwdChange = (event)=>{
+        console.log(2);
+        let userpwd = event.target.value.trim();
+        this.setState({
+            userpwd
+        });
+    };
+
+
+}
+
+//change
+//onChange   在输入框输入的过程中就调用
+
+ReactDOM.render(<Login/>,document.getElementById("example"));
+ReactDOM.render(<Login1/>,document.getElementById("example2"));
+</script>
 </body>
 </html>

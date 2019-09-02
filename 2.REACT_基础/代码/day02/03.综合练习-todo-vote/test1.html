@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票案例</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+    class Vote extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {
+                support:0,
+                against:0
+            }
+        }
+
+        change = (tag)=>{
+            if (tag==='support'){
+                this.setState({
+                    support:this.state.support + 1
+                });
+            }else {
+                this.setState({
+                    against:this.state.against + 1
+                });
+            }
+        };
+
+
+        render() {
+            const {support,against} = this.state;
+            return (
+                <div className="panel panel-default" style={{width:"40%",margin:"0 auto"}}>
+                    <h2>中国VS日本，中国必胜！</h2>
+                    <VoteBody support = {support} against={against} />
+                    <VoteFooter change ={this.change}  />
+                </div>
+            );
+        }
+    }
+
+
+    class VoteBody extends React.Component{
+        constructor(props) {
+            super(props);
+
+        }
+
+        render() {
+            const {support,against} = this.props;
+            let rate = (support+against)===0?'0%':parseFloat((support / (support+against) * 100).toFixed(2) )+ '%';
+            return (
+                <div className="panel-body">
+                    支持人数:{support}<br/>
+                    反对人数:{against}<br/>
+                    支持率：{rate}
+                </div>
+            );
+        }
+
+    }
+
+    class VoteFooter extends React.Component{
+        constructor(props) {
+            super(props);
+
+        }
+
+        render() {
+            return (
+                <div className="panel-footer">
+                    <button className="btn btn-success" onClick={this.support}>支持</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button className="btn btn-danger" onClick={this.against}>反对</button>
+                </div>
+            );
+        }
+
+        support = ()=>{
+            const {change} = this.props;
+            change('support');
+        };
+
+        against=()=>{
+            const {change} = this.props;
+            change('against');
+        };
+
+    }
+
+    ReactDOM.render(<Vote/>,document.querySelector("#example"));
+
+
+</script>
+</body>
+</html>
