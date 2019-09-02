@@ -30,6 +30,7 @@
             console.log('constructor初始化操作');
         }
 
+        //组件将要挂载
         componentWillMount(){
             console.log('componentWillMount');
         }
@@ -37,10 +38,8 @@
         //组件挂载完成  在render只是
         componentDidMount(){
             console.log('componentDidMount');
-
-            console.log('------------------');
-            setInterval(()=>{
-
+          this.timer =   setInterval(()=>{
+                console.log('------------------');
                 if (this.state.opacity <=0){
                     this.setState({
                         opacity:1
@@ -53,6 +52,29 @@
             },200);
         }
 
+        //组件将要更新
+        componentWillUpdate(){
+            console.log('componentWillUpdate');
+        }
+
+        componentDidUpdate(){
+            console.log('componentDidUpdate');
+
+        }
+
+
+        //卸载组件
+        unmount = ()=>{
+            ReactDOM.unmountComponentAtNode(document.getElementById("example"));
+        };
+
+
+        //在组件卸载之前调用
+        componentWillUnmount(){
+            console.log("componentWillUnmount");
+            clearInterval(this.timer);
+
+        }
 
 
         render() {
@@ -60,15 +82,11 @@
             return (
                 <div>
                     <h2 style={{opacity:this.state.opacity}}>React学不会,怎么办?</h2>
-                    <button>不活了</button>
+                    <button onClick={this.unmount}>不活了</button>
                 </div>
             );
         }
     }
-
-
-
-
 
     ReactDOM.render(<Life/>,document.getElementById("example"));
 
