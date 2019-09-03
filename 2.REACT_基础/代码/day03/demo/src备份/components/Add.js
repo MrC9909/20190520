@@ -1,6 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 
 export default class Add extends React.Component{
+
+    //设置规则
+    static propTypes = {
+        addCommentToArray:PropTypes.func.isRequired
+    };
+
     constructor(props) {
         super(props);
     }
