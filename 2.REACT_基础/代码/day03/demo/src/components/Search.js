@@ -8,7 +8,7 @@ export default class Search extends React.Component{
     searchName = ()=>{
         const searchName = this.refs.search.value.trim();
         this.props.setSearchName(searchName);
-    }
+    };
 
     render(){
         return (
