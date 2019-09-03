@@ -18,7 +18,7 @@ const merge = require('webpack-merge');
 //暴露
 module.exports =merge(common,{
     //入口  入口文件的路径地址
-    entry: ['./src/js/index.js','./src/index.html'],
+    entry: ['./src备份1/js/index1.js','./src备份1/index.html'],
 
     //配置loader
     module: {

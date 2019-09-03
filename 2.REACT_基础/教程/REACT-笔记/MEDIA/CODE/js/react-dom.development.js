@@ -2401,7 +2401,7 @@ var describeComponentFrame = function (name, source, ownerName) {
     var fileName = path.replace(BEFORE_SLASH_RE, '');
     {
       // In DEV, include code for a common special case:
-      // prefer "folder/index.js" instead of just "index.js".
+      // prefer "folder/index1.js" instead of just "index1.js".
       if (/^index\./.test(fileName)) {
         var match = path.match(BEFORE_SLASH_RE);
         if (match) {
@@ -3272,7 +3272,7 @@ var enableStableConcurrentModeAPIs = false;
 
 var warnAboutShorthandPropertyCollision = false;
 
-// TODO: direct imports like some-package/src/* are bad. Fix me.
+// TODO: direct imports like some-package/src备份1/* are bad. Fix me.
 var didWarnValueDefaultValue = false;
 var didWarnCheckedDefaultChecked = false;
 var didWarnControlledToUncontrolled = false;
@@ -5440,7 +5440,7 @@ function getActiveElementDeep() {
   var element = getActiveElement();
   while (element instanceof win.HTMLIFrameElement) {
     // Accessing the contentDocument of a HTMLIframeElement can cause the browser
-    // to throw, e.g. if it has a cross-origin src attribute
+    // to throw, e.g. if it has a cross-origin src备份1 attribute
     try {
       win = element.contentDocument.defaultView;
     } catch (e) {
@@ -5820,7 +5820,7 @@ function getHostProps$1(element, props) {
   return hostProps;
 }
 
-// TODO: direct imports like some-package/src/* are bad. Fix me.
+// TODO: direct imports like some-package/src备份1/* are bad. Fix me.
 var didWarnValueDefaultValue$1 = void 0;
 
 {
@@ -6662,7 +6662,7 @@ function isCustomComponent(tagName, props) {
     case 'annotation-xml':
     case 'color-profile':
     case 'font-face':
-    case 'font-face-src':
+    case 'font-face-src备份1':
     case 'font-face-uri':
     case 'font-face-format':
     case 'font-face-name':
@@ -7469,7 +7469,7 @@ function validateProperties$2(type, props, canUseEventSystem) {
   warnUnknownProperties(type, props, canUseEventSystem);
 }
 
-// TODO: direct imports like some-package/src/* are bad. Fix me.
+// TODO: direct imports like some-package/src备份1/* are bad. Fix me.
 var didWarnInvalidHydration = false;
 var didWarnShadyDOM = false;
 
@@ -8410,7 +8410,7 @@ function restoreControlledState$1(domElement, tag, props) {
   }
 }
 
-// TODO: direct imports like some-package/src/* are bad. Fix me.
+// TODO: direct imports like some-package/src备份1/* are bad. Fix me.
 var validateDOMNesting = function () {};
 var updatedAncestorInfo = function () {};
 

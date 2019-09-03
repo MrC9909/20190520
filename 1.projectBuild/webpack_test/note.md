@@ -9,7 +9,7 @@ webpack
       
 3.配置webpack.config.js文件 
 module.exports = {
-    entry:‘./src/index.js’,
+    entry:‘./src/index1.js’,
     output:{
         path:path.resolve(__dirname,'build'),
         filename:'build.js'

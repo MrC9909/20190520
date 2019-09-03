@@ -124,7 +124,7 @@ gulp 任务名
 
        ```
        	gulp.task('browserify', function() {
-       	  return gulp.src('./build/js/index.js')
+       	  return gulp.src('./build/js/index1.js')
        	    .pipe(browserify())//将CommonJs语法转换为浏览器能识别的语法
        	    .pipe(rename('built.js'))//为了防止冲突将文件重命名
        	    .pipe(gulp.dest('build/js'))//输出到指定位置

@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //暴露
 module.exports = {
     //入口  入口文件的路径地址
-    entry: './src/js/index.js',
+    entry: './src备份1/js/index1.js',
     //出口
     output: {
         //输出的绝对路径
@@ -85,7 +85,7 @@ module.exports = {
             //输出的文件名称
             filename: 'index.html',
             //指定模板进行输出
-            template:'./src/index.html'
+            template:'./src备份1/index.html'
         }),
     ]
 };

@@ -93,7 +93,7 @@ const open = require('open');
 //对js文件进行语法检查
 //使用jshint进行语法检查
 gulp.task('jshint',()=>{
-    return gulp.src('./src/js/*.js')//将指定目录下的文件导入到gulp的流中
+    return gulp.src('./src备份1/js/*.js')//将指定目录下的文件导入到gulp的流中
         .pipe(jshint({
             esversion: 6
         })) //做语法检查
@@ -103,7 +103,7 @@ gulp.task('jshint',()=>{
 
 //语法转化
 gulp.task('babel',()=>{
-    return gulp.src('./src/js/*.js') //将指定目录下的文件导入到gulp流中
+    return gulp.src('./src备份1/js/*.js') //将指定目录下的文件导入到gulp流中
         .pipe(babel({     //调用babel进行语法转化   将ES6Module模块语法转为了Common.js语法
             presets: ['@babel/env']
         }))
@@ -113,7 +113,7 @@ gulp.task('babel',()=>{
 
 //将common.js语法转化为浏览器可以识别语法
 gulp.task('browserify', function() {
-   return  gulp.src('./build/js/index.js')
+   return  gulp.src('./build/js/index1.js')
         .pipe(browserify()) //将common.js语法转化为浏览器可以识别语法
         .pipe(rename('built.js')) //将流中的文件进行重新命名
         .pipe(gulp.dest('./build/js'))
@@ -133,7 +133,7 @@ gulp.task('uglify',()=>{
 
 //对less文件进行编译
 gulp.task('less', function () {
-    return gulp.src('./src/less/*.less')
+    return gulp.src('./src备份1/less/*.less')
         .pipe(less({
             plugins: [autoprefix]  //自动补前缀
         }))
@@ -159,7 +159,7 @@ gulp.task('cssmin', function () {
 
 /*
 gulp.task('imagemin', function () {
-    return gulp.src('./src/imgs/*.{png,jpg,gif,ico}')
+    return gulp.src备份1('./src备份1/imgs/*.{png,jpg,gif,ico}')
         .pipe(imagemin({  //在gulp流中进行图片压缩
             optimizationLevel: 6, //类型：Number  默认：3  取值范围：0-7（优化等级）
             progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
@@ -172,7 +172,7 @@ gulp.task('imagemin', function () {
 
 //html压缩
 gulp.task('html', () => {
-    return gulp.src('./src/index.html')
+    return gulp.src('./src备份1/index.html')
         .pipe(htmlmin({
             collapseWhitespace: true,  //压缩空格
             removeComments:true
@@ -196,9 +196,9 @@ gulp.task('watch',(bb)=>{
     open('http://localhost:3000/index.html');
 
     //监视指定文件（第一个参数），一旦文件发生变化，就自动执行后面的任务（第二个参数）
-    gulp.watch('./src/less/*.less', gulp.series(['less','concat','cssmin']));
-    gulp.watch('./src/js/*.js', gulp.series(['jshint','babel','browserify','uglify']));
-    gulp.watch('./src/index.html', gulp.series('html'));
+    gulp.watch('./src备份1/less/*.less', gulp.series(['less','concat','cssmin']));
+    gulp.watch('./src备份1/js/*.js', gulp.series(['jshint','babel','browserify','uglify']));
+    gulp.watch('./src备份1/index.html', gulp.series('html'));
     bb();
 });
 

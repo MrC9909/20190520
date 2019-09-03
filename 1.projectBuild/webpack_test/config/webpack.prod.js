@@ -1,6 +1,6 @@
 /*
 * 1.如果没有webpack.config.js我们直接进行编译：
-*   webpack ./src/js/index.js ./build/js/build.js
+*   webpack ./src备份1/js/index1.js ./build/js/build.js
 *
 * 2.我们直接执行webpack命令 会自动去找webpack.config.js文件  ，自动帮我们完成编译
 *
@@ -77,7 +77,7 @@ module.exports = merge(common,    {
             //输出的文件名称
             filename: 'index.html',
             //指定模板进行输出
-            template:'./src/index.html',
+            template:'./src备份1/index.html',
           minify:{
               //压缩空格
               collapseWhitespace:true,

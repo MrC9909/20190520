@@ -33,7 +33,7 @@
 		- npm install webpack@3 -g  //全局安装
 		- npm install webpack@3 --save-dev  //局部安装
 	3. 小试牛刀处理一个js
-		执行命令：webpack ./src/js/index.js(入口，主模块文件的路径) ./build/index.js（出口）
+		执行命令：webpack ./src/js/index1.js(入口，主模块文件的路径) ./build/index1.js（出口）
 	观察发现webpack会把es6的模块化语法，直接编译为浏览器识别的模块化语法，不过类似于箭头函数等依然存在
 
 #### 2. 使用webpack配置文件
@@ -48,7 +48,7 @@
      *    plugins：执行loader做不了的任务
      * 3.如何找到自己想要的loader？
      *   优先去官网找自己想要的loader，没有再去npm官网上找。
-     * 4.在终端输入：webpack ./src/js/index.js ./build/js/built.js
+     * 4.在终端输入：webpack ./src/js/index1.js ./build/js/built.js
      *  问题：这种方式只能够编译打包js、json文件，其他文件处理不了
      * 5.webpack --display-modules可以查看隐藏的任务
      */
@@ -56,12 +56,12 @@
     
     module.exports = {
       //入口（从哪里进入开始解析）
-      entry:'./src/js/index.js',
+      entry:'./src/js/index1.js',
     
       //出口（最终加工完的代码输出到哪里）
       output: {// 输出配置
         path: path.resolve(__dirname, 'build'),//输出文件路径配置
-        filename: 'index.js',// 输出文件名
+        filename: 'index1.js',// 输出文件名
       }
     };
 
@@ -254,7 +254,7 @@
 	      loader: 'html-loader',
 	    }
 	  }
-	  同时entry重写为:['./src/js/index.js','./src/index.html']
+	  同时entry重写为:['./src/js/index1.js','./src/index.html']
 	  备注：需要注意的是：dev方式的运行是加载在内存中的，没有任何输出
 
 #### 13. 提取公共代码实现复用

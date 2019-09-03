@@ -443,7 +443,7 @@ var arr3 = arr.map(function(item){
 
 ​			项目结构中最主要的目录，因为后期所有的JS、路由、组件等都是放到这里面（包括需要编写的CSS或者图片等）
 
-​			index.js 是当前项目的入口文件
+​			index1.js 是当前项目的入口文件
 
 ##### 		4. .gitignore
 
@@ -945,7 +945,7 @@ class App extends Component {
 export default App
 ```
 
-2. index.js
+2. index1.js
 
 ```
 // 引入antd整个css
@@ -999,7 +999,7 @@ module.exports = function override(config, env) {
    }
    ```
 
-4. 去除样式的引入: index.js
+4. 去除样式的引入: index1.js
 
    
 
